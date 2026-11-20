@@ -48,7 +48,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_XZ_UTILS=1
 
 	# Version & Variant
-	export FOX_VERSION="R12.1"
+	export FOX_MAINTAINER_PATCH_VERSION="1"
 	export FOX_VARIANT="A12"
 	export FOX_BUILD_TYPE="Unstable"
 
