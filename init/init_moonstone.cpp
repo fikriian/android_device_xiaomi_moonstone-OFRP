@@ -55,7 +55,7 @@ void vendor_load_properties() {
     const std::string hwd = GetProperty("ro.boot.board_id", "");
     if (hwc == "sunstone_global") {
         model_property_override("sunstone", "Redmi Note 12 5G");
-    } else if (hwc == "moonstone_p_global" || "moonstone_p_in")  {
+    } else if (hwc == "moonstone_p_global" || hwc == "moonstone_p_in")  {
         model_property_override("moonstone", "POCO X5 5G");
     } else {
         model_property_override("sunstone", "Redmi Note 12R Pro 5G");
