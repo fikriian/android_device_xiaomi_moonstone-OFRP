@@ -38,7 +38,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
 	# Settings
 	export FOX_TARGET_ALT="moonstone"
-	export FOX_ALLOW_EARLY_SETTINGS_LOAD=1
+	export FOX_VANILLA_BUILD=1
 
 	# Binaries & Tools
 	export FOX_USE_BASH_SHELL=1
@@ -53,7 +53,15 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VARIANT="A12"
 	export FOX_BUILD_TYPE="Unofficial"
 
-	export FOX_AB_DEVICE=1
+	export FOX_VIRTUAL_AB_DEVICE=1
+
+	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+    export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+
+	# instruct magiskboot v24+ to always patch the vbmeta header when patching the recovery/boot image; do *not* remove!
+	export FOX_PATCH_VBMETA_FLAG="1"
+
+	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
 
 	lunch twrp_$FDEVICE-eng
 	# let's see what are our build VARs
