@@ -36,6 +36,22 @@ fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
+	# OrangeFox Addons
+	export FOX_ENABLE_APP_MANAGER=1
+
+	# Binaries & Tools
+	export FOX_USE_BASH_SHELL=1
+	export FOX_ASH_IS_BASH=1
+	export FOX_USE_NANO_EDITOR=1
+	export FOX_USE_TAR_BINARY=1
+	export FOX_USE_SED_BINARY=1
+	export FOX_USE_XZ_UTILS=1
+
+	# Version & Variant
+	export FOX_VERSION="R12.1"
+	export FOX_VARIANT="A12"
+	export FOX_BUILD_TYPE="Unstable"
+
 	lunch twrp_$FDEVICE-eng
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
