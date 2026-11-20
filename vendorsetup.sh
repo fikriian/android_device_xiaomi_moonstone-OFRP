@@ -36,8 +36,9 @@ fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
-	# OrangeFox Addons
-	export FOX_ENABLE_APP_MANAGER=1
+	# Settings
+	export FOX_TARGET_ALT="moonstone"
+	export FOX_ALLOW_EARLY_SETTINGS_LOAD=1
 
 	# Binaries & Tools
 	export FOX_USE_BASH_SHELL=1
@@ -50,7 +51,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	# Version & Variant
 	export FOX_MAINTAINER_PATCH_VERSION=1
 	export FOX_VARIANT="A12"
-	export FOX_BUILD_TYPE="Unstable"
+	export FOX_BUILD_TYPE="Unofficial"
 
 	export FOX_AB_DEVICE=1
 
