@@ -22,14 +22,44 @@
 OF_HIDE_NOTCH := 1
 OF_USE_GREEN_LED := 0
 OF_FLASHLIGHT_ENABLE := 1
-OF_ALLOW_DISABLE_NAVBAR := 0
 OF_ENABLE_USB_STORAGE := 1
+OF_DONT_PATCH_ENCRYPTED_DEVICE := 1
+OF_NO_TREBLE_COMPATIBILITY_CHECK := 1
+OF_ENABLE_LPTOOLS := 1
+OF_ENABLE_ALL_PARTITION_TOOLS := 1
+OF_QUICK_BACKUP_LIST := /boot;/data;
 
-OF_MAINTAINER := "@fikriian"
+FOX_DELETE_AROMAFM := 1
+FOX_ENABLE_FRP_ADDON := 1
+
+OF_MAINTAINER := "fikriian"
 
 OF_SPLASH_MAX_SIZE := "130"
 
-OF_ADVANCED_SECURITY := 1
+# run a process after formatting data to recreate /data/media/0 (only when forced-encryption is being disabled)
+OF_RUN_POST_FORMAT_PROCESS := 1
+
+# ensure that /sdcard is bind-unmounted before f2fs data repair or format (required for FBE v1)
+OF_UNBIND_SDCARD_F2FS := 1
+
+# FBEv2
+ifeq ($(FOX_VARIANT),FBEv2)
+   	# no additional check for MIUI props
+    OF_NO_ADDITIONAL_MIUI_PROPS_CHECK := 1
+
+   	# dispense with the entire OTA menu
+   	OF_DISABLE_OTA_MENU := 1
+else # FBEv1
+   	# prevent MIUI from overwriting OrangeFox
+   	OF_PATCH_AVB20 := 1
+
+    # MIUI/delta incremental OTA stuff
+    OF_NO_MIUI_PATCH_WARNING := 1
+    OF_KEEP_DM_VERITY := 1
+    OF_DISABLE_MIUI_OTA_BY_DEFAULT := 1
+   	OF_SUPPORT_ALL_BLOCK_OTA_UPDATES := 1
+   	OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR := 1
+endif
 
 # OrangeFox GUI settings
 OF_SCREEN_H := 2400
@@ -38,4 +68,3 @@ OF_STATUS_INDENT_LEFT := 48
 OF_STATUS_INDENT_RIGHT := 48
 OF_HIDE_NOTCH := 1
 OF_CLOCK_POS := 1
-OF_OPTIONS_LIST_NUM := 9
